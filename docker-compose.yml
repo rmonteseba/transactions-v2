@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  development-db:
+    image: postgres:13
+    ports:
+      - 7001:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: transactions_local
+    networks:
+      - net
+  staging-db:
+    image: postgres:13
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: transactions_staging
+    networks:
+      - net
+  production-db:
+    image: postgres:13
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: transactions_production
+    networks:
+      - net
+networks:
+  net:

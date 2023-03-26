@@ -1,0 +1,53 @@
+// This is the Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id    String    @id @default(uuid())
+  name  String?
+  accounts Account[]
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+}
+
+model Account {
+  id    String    @id @default(uuid())
+  currency Currency @relation(fields: [currencyId], references: [id])
+  currencyId String @map("currency_id")
+  user User @relation(fields: [userId], references: [id])
+  userId String @map("user_id")
+  balance Int @default(0)
+  sourceTransactions Transaction[] @relation("source_account")
+  destinationTransactions Transaction[] @relation("destination_account")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+}
+
+model Transaction {
+  id String @id @default(uuid())
+  sourceAccountId String @map("source_account_id")
+  destinationAccountId String @map("destination_account_id")
+  source Account @relation("source_account", fields: [sourceAccountId], references: [id])
+  destination Account @relation("destination_account", fields: [destinationAccountId], references: [id])
+  amount Int
+  description String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+}
+
+model Currency {
+  id        String     @id @default(uuid())
+  name String
+  code String
+  accounts Account[]
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+}
