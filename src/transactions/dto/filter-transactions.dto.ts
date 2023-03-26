@@ -1,5 +1,15 @@
+import { IsISO8601, IsOptional, IsUUID } from 'class-validator';
+
 export class FilterTransactionsDto {
-  from: string;
-  to: string;
-  sourceAccountId: string;
+  @IsOptional()
+  @IsISO8601()
+  from?: string;
+
+  @IsOptional()
+  @IsISO8601()
+  to?: string;
+
+  @IsOptional()
+  @IsUUID()
+  sourceAccountId?: string;
 }

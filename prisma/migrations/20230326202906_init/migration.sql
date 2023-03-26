@@ -14,6 +14,7 @@ CREATE TABLE "Account" (
     "currency_id" TEXT NOT NULL,
     "user_id" TEXT NOT NULL,
     "balance" INTEGER NOT NULL DEFAULT 0,
+    "description" TEXT,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 

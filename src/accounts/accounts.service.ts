@@ -8,11 +8,17 @@ import { FindAccountDto } from './dto/find-account.dto';
 export class AccountsService {
   constructor(private prisma: PrismaService) {}
 
-  create({ userId, currencyId, balance }: CreateAccountDto): Promise<Account> {
+  create({
+    userId,
+    currencyId,
+    balance,
+    description
+  }: CreateAccountDto): Promise<Account> {
     return this.prisma.account.create({
       data: {
         userId,
         balance,
+        description,
         currencyId
       }
     });

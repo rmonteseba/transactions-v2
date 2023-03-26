@@ -12,16 +12,27 @@
 				{
 					"name": "Create transaction",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "Get transactions",
-					"request": {
-						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"source\": \"{{SEBASTIAN_USD_ACCOUNT}}\",\r\n    \"destination\": \"{{USER_ACCOUNT_ID}}\",\r\n    \"amount\": 123000,\r\n    \"description\": \"With love 4 from EEUU\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{API_URL}}/transactions",
 							"host": [
@@ -29,6 +40,106 @@
 							],
 							"path": [
 								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get transactions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"from\": \"2022-02-25T00:00:00.000Z\",\r\n    \"to\": \"2026-02-25T00:00:00.000Z\",\r\n    \"sourceAccountId\": \"{{SEBASTIAN_USD_ACCOUNT}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/transactions",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Create account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const { id } = pm.response.json();\r",
+									"pm.environment.set('USER_ACCOUNT_ID', id); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"currencyId\": \"{{CURRENCY_USD}}\",\r\n    \"userId\": \"{{USER_ID}}\",\r\n    \"balance\": 10000,\r\n    \"description\": \"{{USER_NAME}} magic account\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/accounts",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/accounts/{{MARTIN_USD_ACCOUNT}}",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"accounts",
+								"{{MARTIN_USD_ACCOUNT}}"
 							]
 						}
 					},
@@ -62,13 +173,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{API_URL}}/currencies/{{CURRENCY_UUID}}",
+							"raw": "{{API_URL}}/currencies/{{CURRENCY_USD}}",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
 								"currencies",
-								"{{CURRENCY_UUID}}"
+								"{{CURRENCY_USD}}"
 							]
 						}
 					},
@@ -81,9 +192,40 @@
 			"item": [
 				{
 					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const { id, name } = pm.response.json();\r",
+									"pm.environment.set('USER_ID', id);\r",
+									"pm.environment.set('USER_NAME', name);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Diego\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/users",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
 					},
 					"response": []
 				}
@@ -94,9 +236,40 @@
 			"item": [
 				{
 					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const { token } = pm.response.json();\r",
+									"pm.environment.set('AUTH_TOKEN', token); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{USER_ID}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/auth/login",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
 					},
 					"response": []
 				}

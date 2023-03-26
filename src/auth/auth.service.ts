@@ -10,12 +10,7 @@ export class AuthService {
     private jwtService: JwtService
   ) {}
 
-  async validateUser({ id }: LoginUserDto): Promise<any> {
-    const user = await this.usersService.findOne({ id });
-    return user;
-  }
-
-  async login({ id }: any) {
+  async login({ id }: LoginUserDto) {
     const user = await this.usersService.findOne({ id });
     if (!user) throw new HttpException('Forbidden', HttpStatus.NOT_FOUND);
     return { user, token: this.jwtService.sign({ id, name: user.name }) };

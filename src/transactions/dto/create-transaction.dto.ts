@@ -1,12 +1,16 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  IsUUID
+} from 'class-validator';
 
 export class CreateTransactionDto {
-  @IsString()
-  @IsNotEmpty()
+  @IsUUID()
   source: string;
 
-  @IsNotEmpty()
-  @IsString()
+  @IsUUID()
   destination: string;
 
   @IsNotEmpty()
