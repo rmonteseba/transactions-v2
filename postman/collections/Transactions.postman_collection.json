@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "0bea60cd-2d9f-4ff2-81e8-72d44bef9d90",
+		"name": "Transactions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22776984"
+	},
+	"item": [
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "Create transaction",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/transactions",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Currencies",
+			"item": [
+				{
+					"name": "Get all currencies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/currencies",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"currencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get currency",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/currencies/{{CURRENCY_UUID}}",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"currencies",
+								"{{CURRENCY_UUID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
