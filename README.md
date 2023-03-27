@@ -64,6 +64,15 @@ $ yarn run start:dev
 ```
 For running the app in watch mode and allow hot reloading
 
+## Inspect the data
+During your walkthrough you can always access the database using your favorite DB workbench or you can also run
+
+```bash
+$ yarn prisma studio
+```
+
+For checking the project entities and data details
+
 ## Improvements
 
 Architectural improvements [TODO]

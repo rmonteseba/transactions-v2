@@ -17,6 +17,11 @@ export class CurrenciesController {
     return this.currenciesService.findAll();
   }
 
+  @Post('update-exchange-rates')
+  updateExchangeRates() {
+    return this.currenciesService.updateExchangeRates();
+  }
+
   @Get(':id')
   findOne(@Param() findCurrencyDto: FindCurrencyDto) {
     return this.currenciesService.findOne(findCurrencyDto);

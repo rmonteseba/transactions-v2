@@ -9,9 +9,13 @@ import { configurations } from './config/app.config';
 import { PrismaModule } from './prisma/prisma.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { JobsModule } from './jobs/jobs.module';
 
 @Module({
   imports: [
+    ScheduleModule.forRoot(),
+    JobsModule,
     ConfigModule.forRoot({
       isGlobal: true,
       load: [() => configurations]
