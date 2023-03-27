@@ -19,7 +19,7 @@ import { UserStateDto } from '../auth/dto/user-state.dto';
 export class TransactionsController {
   constructor(private readonly transactionsService: TransactionsService) {}
 
-  @Post()
+  @Post('transfer')
   create(
     @Body() createTransactionDto: CreateTransactionDto,
     @LoggedUser() user: UserStateDto

@@ -34,12 +34,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{API_URL}}/transactions",
+							"raw": "{{API_URL}}/transactions/transfer",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
-								"transactions"
+								"transactions",
+								"transfer"
 							]
 						}
 					},
@@ -59,12 +60,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{API_URL}}/transactions",
+									"raw": "{{API_URL}}/transactions/transfer",
 									"host": [
 										"{{API_URL}}"
 									],
 									"path": [
-										"transactions"
+										"transactions",
+										"transfer"
 									]
 								}
 							},
@@ -88,12 +90,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{API_URL}}/transactions",
+									"raw": "{{API_URL}}/transactions/transfer",
 									"host": [
 										"{{API_URL}}"
 									],
 									"path": [
-										"transactions"
+										"transactions",
+										"transfer"
 									]
 								}
 							},
@@ -129,12 +132,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{API_URL}}/transactions",
+							"raw": "{{API_URL}}/transactions/transfer",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
-								"transactions"
+								"transactions",
+								"transfer"
 							]
 						}
 					},
@@ -154,12 +158,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{API_URL}}/transactions",
+									"raw": "{{API_URL}}/transactions/transfer",
 									"host": [
 										"{{API_URL}}"
 									],
 									"path": [
-										"transactions"
+										"transactions",
+										"transfer"
 									]
 								}
 							},
@@ -183,12 +188,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{API_URL}}/transactions",
+									"raw": "{{API_URL}}/transactions/transfer",
 									"host": [
 										"{{API_URL}}"
 									],
 									"path": [
-										"transactions"
+										"transactions",
+										"transfer"
 									]
 								}
 							},
@@ -212,12 +218,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{API_URL}}/transactions",
+									"raw": "{{API_URL}}/transactions/transfer",
 									"host": [
 										"{{API_URL}}"
 									],
 									"path": [
-										"transactions"
+										"transactions",
+										"transfer"
 									]
 								}
 							},
@@ -241,12 +248,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{API_URL}}/transactions",
+									"raw": "{{API_URL}}/transactions/transfer",
 									"host": [
 										"{{API_URL}}"
 									],
 									"path": [
-										"transactions"
+										"transactions",
+										"transfer"
 									]
 								}
 							},
