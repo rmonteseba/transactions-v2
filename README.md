@@ -81,7 +81,7 @@ You can check the `/postman` directory which includes a postman environment and 
 
 **Project improvements:**
 1. **Consider the inclusion/migration to scalable backend architectures** e.g hexagonal architecture, this since the project is built on top of a bank domain and bank systems are normally scalable-demanding and highly-interoperable with other systems.
-2. **Implement output validation layers**, I think is a good practice to control what is being returned on each endpoint similar to the used dtos strategy.
+2. **Implement output validation layers**, I think is a good practice to control what is being returned on each endpoint similar to the used DTOs strategy.
 3. **Do not allow users to populate the balance on account creation**, this was only made with testing purposes.
 4. **Evaluate alternative strategies/technologies as source-of-truth for saving currency exchanges**, depending on the case and the frequency of those updates, other technologies (e.g redis) could give an interesting approach and performance metrics for tackling recurrent exchange rate updates, on another hand, subscribing to a real time API for allowing on demand (and real time) exchange rates updates could be a good alternative too
 5. **Be careful with the FixerAPI downtimes**  since it seems not to be up sometimes, if we wouldn't like to change the api, we can also implement a retry strategy on the cronjobs for mitigating a possible lack of update
