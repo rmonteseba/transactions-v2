@@ -73,6 +73,10 @@ $ yarn prisma studio
 
 For checking the project entities and data details
 
+## Use cases
+
+You can check the `/postman` directory which includes a postman environment and a postman collection with various examples.
+
 ## Improvements
 
 **Project improvements:**
