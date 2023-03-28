@@ -1,0 +1,559 @@
+{
+	"info": {
+		"_postman_id": "0bea60cd-2d9f-4ff2-81e8-72d44bef9d90",
+		"name": "Transactions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22776984"
+	},
+	"item": [
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "Create transaction (Send my money)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"source\": \"{{USER_ACCOUNT_ID}}\",\r\n    \"destination\": \"{{MARTIN_USD_ACCOUNT}}\",\r\n    \"amount\": 1,\r\n    \"description\": \"With love from EEUU\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/transactions/transfer",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"transactions",
+								"transfer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create transaction (Send my money to same currency account)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"source\": \"{{USER_ACCOUNT_ID}}\",\r\n    \"destination\": \"{{MARTIN_USD_ACCOUNT}}\",\r\n    \"amount\": 100,\r\n    \"description\": \"With love from EEUU\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/transactions/transfer",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"transactions",
+										"transfer"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Create transaction (Send my money to an account with a different currency)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"source\": \"{{USER_ACCOUNT_ID}}\",\r\n    \"destination\": \"{{MARTIN_EUR_ACCOUNT}}\",\r\n    \"amount\": 200,\r\n    \"description\": \"With love from EEUU\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/transactions/transfer",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"transactions",
+										"transfer"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Create transaction (Outsourced - Send money)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"source\": \"{{SEBASTIAN_USD_ACCOUNT}}\",\r\n    \"destination\": \"{{MARTIN_USD_ACCOUNT}}\",\r\n    \"amount\": 10,\r\n    \"description\": \"With love from EEUU xxx\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/transactions/transfer",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"transactions",
+								"transfer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create transaction (Send money between an account and my account - Different currency)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"source\": \"{{MARTIN_EUR_ACCOUNT}}\",\r\n    \"destination\": \"{{USER_ACCOUNT_ID}}\",\r\n    \"amount\": 200,\r\n    \"description\": \"With love from EEUU\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/transactions/transfer",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"transactions",
+										"transfer"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Create transaction (Send money between an account and my account - Same currency)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"source\": \"{{MARTIN_USD_ACCOUNT}}\",\r\n    \"destination\": \"{{USER_ACCOUNT_ID}}\",\r\n    \"amount\": 100,\r\n    \"description\": \"With love from EEUU\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/transactions/transfer",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"transactions",
+										"transfer"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Create transaction (Send money between accounts with same currency)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"source\": \"{{SEBASTIAN_USD_ACCOUNT}}\",\r\n    \"destination\": \"{{MARTIN_USD_ACCOUNT}}\",\r\n    \"amount\": 10,\r\n    \"description\": \"With love from EEUU xxx\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/transactions/transfer",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"transactions",
+										"transfer"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Create transaction (Send money between accounts with different currency)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"source\": \"{{SEBASTIAN_UYU_ACCOUNT}}\",\r\n    \"destination\": \"{{MARTIN_EUR_ACCOUNT}}\",\r\n    \"amount\": 1000,\r\n    \"description\": \"With love from EEUU xxx\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/transactions/transfer",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"transactions",
+										"transfer"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Get transactions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"from\": \"2022-02-25T00:00:00.000Z\",\r\n    \"to\": \"2026-02-25T00:00:00.000Z\",\r\n    \"sourceAccountId\": \"{{MARTIN_EUR_ACCOUNT}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/transactions",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Create account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const { id } = pm.response.json();\r",
+									"pm.environment.set('USER_ACCOUNT_ID', id); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"currencyId\": \"{{CURRENCY_USD}}\",\r\n    \"userId\": \"{{USER_ID}}\",\r\n    \"balance\": 10000,\r\n    \"description\": \"{{USER_NAME}} magic account\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/accounts",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get account",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/accounts/{{MARTIN_EUR_ACCOUNT}}",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"accounts",
+								"{{MARTIN_EUR_ACCOUNT}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get account my account info",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/accounts/{{USER_ACCOUNT_ID}}",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"accounts",
+								"{{USER_ACCOUNT_ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Currencies",
+			"item": [
+				{
+					"name": "Get all currencies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/currencies",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"currencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get currency",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/currencies/{{CURRENCY_USD}}",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"currencies",
+								"{{CURRENCY_USD}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update exchange rates",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/currencies/update-exchange-rates",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"currencies",
+								"update-exchange-rates"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const { id, name } = pm.response.json();\r",
+									"pm.environment.set('USER_ID', id);\r",
+									"pm.environment.set('USER_NAME', name);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Diego\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/users",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const { token } = pm.response.json();\r",
+									"pm.environment.set('AUTH_TOKEN', token); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{USER_ID}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/auth/login",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
