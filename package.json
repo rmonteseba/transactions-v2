@@ -17,7 +17,11 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "migrate": "docker exec transactions-v2-app-1 yarn prisma migrate deploy",
+    "migrate:deploy": "docker exec transactions-v2-app-1 yarn prisma migrate deploy",
+    "migrate:generate": "docker exec transactions-v2-app-1 yarn prisma generate",
+    "prisma:studio": "docker exec transactions-v2-app-1 yarn prisma studio"
   },
   "prisma": {
     "seed": "ts-node prisma/seeds/seed.ts"

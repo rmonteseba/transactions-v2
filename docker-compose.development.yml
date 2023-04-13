@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:13
+    ports:
+      - ${APP_DATABASE_PORT}:${DATABASE_PORT}
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    networks:
+      - net
+  app:
+    build:
+      context: .
+      target: development
+      args:
+        PORT: ${PORT}
+        DATABASE_URL: ${DATABASE_URL}
+    ports:
+      - ${APP_PORT}:${PORT}
+    volumes:
+      - .:/app
+      - /app/node_modules
+    env_file:
+      - .env
+    depends_on:
+      - db
+    networks:
+      - net
+networks:
+  net:
