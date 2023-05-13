@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  # DB System could be allocated externally
+  db:
+    image: postgres:13
+    ports:
+      - ${APP_DATABASE_PORT}:${DATABASE_PORT}
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    networks:
+      - net
+  app:
+    build:
+      context: .
+      target: production
+      args:
+        PORT: ${PORT}
+        DATABASE_URL: ${DATABASE_URL}
+    ports:
+      - ${APP_PORT}:${PORT}
+    env_file:
+      - .env
+    depends_on:
+      - db
+    networks:
+      - net
+networks:
+  net:

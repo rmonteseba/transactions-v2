@@ -1,7 +1,7 @@
 import { EnvironmentConfiguration } from 'src/config/environment/environment.type';
 
 export const development: EnvironmentConfiguration = {
-  server: { port: parseInt(process.env.APP_PORT, 10) || 7000 },
+  server: { port: parseInt(process.env.PORT, 10) || 3000 },
   jwtSecret: process.env.JWT_SECRET,
   fixerApiBaseUrl: process.env.FIXER_API_BASE_URL,
   fixerApiKey: process.env.FIXER_API_KEY,
